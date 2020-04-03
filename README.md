@@ -1,12 +1,12 @@
 # OrdiTree
-OrdiTree <-folder wirtualnego środowska 
+OrdiTree: <-folder wirtualnego środowska 
 
 lib/
 local/
 OrdiTree/ <- django startproject
 share/
 
-to jest na git
+to jest na git:
 db.sqlite3
 manage.py*
 OrdiTree/
