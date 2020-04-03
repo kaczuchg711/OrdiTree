@@ -10,14 +10,14 @@ OrdiTree/ <- django startproject
 share/
 
 
-to jest na git:
+  to jest na git:
 
-db.sqlite3
+  db.sqlite3
 
-manage.py*
+  manage.py*
 
-OrdiTree/
+  OrdiTree/
 
-_pycache__/
+  _pycache__/
 
-README.md
+  README.md
