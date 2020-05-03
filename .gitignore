@@ -2,3 +2,5 @@ secret_key.py
 .idea/
 */__pychache__
 __pychache__
+OrdiTree/__pycache__/
+login/__pycache__/
