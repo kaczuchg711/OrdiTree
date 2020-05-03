@@ -1,7 +1,6 @@
 secret_key.py
 .idea/
 __pycache__
-*/__pycache__/
 OrdiTree/__pycache__/
 gardens/__pycache__/
 login/__pycache__/
