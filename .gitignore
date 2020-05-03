@@ -1,2 +1,4 @@
 secret_key.py
 .idea/
+*/__pychache__
+__pychache__
