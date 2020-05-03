@@ -7,3 +7,7 @@ def index(request):
     context = {}
     return HttpResponse(template.render(context, request))
 
+def LoginPage(request):
+    template = "LoginPage.html"
+    context = {}
+    return render(request,template,context)
