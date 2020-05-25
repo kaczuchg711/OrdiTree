@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Panel</title>
-</head>
-<body>
-{{ user_id }}
+{% extends 'base.html' %}
+{% block content %}
 
-<button>Rośliny</button>
-<button>Modyfikuj</button>
-<button>Kalendarz</button>
-<button>Profil</button>
-<button>Kontakt</button>
-<button href="/logout">wyloguj</button>
-</body>
-</html>
+    {{ user_id }}
+
+    <button>Rośliny</button>
+    <button>Modyfikuj</button>
+    <button>Kalendarz</button>
+    <button>Profil</button>
+    <button>Kontakt</button>
+
+    <form action="../logout">
+        <button >wyloguj</button>
+    </form>
+{% endblock %}

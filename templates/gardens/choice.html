@@ -2,8 +2,6 @@
 {% block content %}
 
     <form method="post" action="mainPanel"> {% csrf_token %}
-
-
         {% for g in gardens_names %}
             <button>{{ g }}</button>
             <br><br>
