@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.contrib.auth import views as auth_views
 from gardens.views import show_gardens
+from gardens.views import show_panel
 
 urlpatterns = [
     #path('', views.LoginPage, name='login'),
@@ -24,5 +25,6 @@ urlpatterns = [
     path('',auth_views.LoginView.as_view(),name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='registration/logout.html'), name='logout'),
     path('admin/', admin.site.urls),
-    path('gardens/', show_gardens),
+    path('gardens/', show_gardens,name='gardens'),
+    path('gardens/mainPanel', show_panel,name='mainPanel'),
 ]
