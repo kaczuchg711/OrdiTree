@@ -9,7 +9,8 @@
     <button>Profil</button>
     <button>Kontakt</button>
 
-    <form action="../logout">
+    <form action="../logout">         {% csrf_token %}
+
         <button >wyloguj</button>
     </form>
 {% endblock %}
