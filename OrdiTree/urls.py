@@ -15,14 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.contrib.auth import views as auth_views
 from gardens.views import show_gardens
-from login import views
+from gardens.views import show_panel
 
 urlpatterns = [
-    path('', views.LoginPage, name='login'),
-    path('login/',include('login.urls')),
+    #path('', views.LoginPage, name='login'),
+    path('login/',auth_views.LoginView.as_view(),name='login'),
+    path('',auth_views.LoginView.as_view(),name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='registration/logout.html'), name='logout'),
     path('admin/', admin.site.urls),
+<<<<<<< HEAD
     path('gardens/', show_gardens),
     
     
+=======
+    path('gardens/', show_gardens,name='gardens'),
+    path('gardens/mainPanel', show_panel,name='mainPanel'),
+>>>>>>> 47d41172959071b70a0dab30c0d5affcc119b1af
 ]
