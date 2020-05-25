@@ -23,12 +23,7 @@ urlpatterns = [
     path('',auth_views.LoginView.as_view(),name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='registration/logout.html'), name='logout'),
     path('admin/', admin.site.urls),
-<<<<<<< HEAD
-    path('gardens/', show_gardens),
-    
-    
-=======
     path('gardens/', show_gardens,name='gardens'),
     path('gardens/mainPanel', show_panel,name='mainPanel'),
->>>>>>> 47d41172959071b70a0dab30c0d5affcc119b1af
+
 ]
