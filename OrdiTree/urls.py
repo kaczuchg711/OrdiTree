@@ -18,12 +18,12 @@ from django.urls import include, path
 from django.contrib.auth import views as auth_views
 from gardens.views import show_gardens
 from gardens.views import show_panel
+from registration.views import register
 
 urlpatterns = [
-    #path('', views.LoginPage, name='login'),
-    path('login/',auth_views.LoginView.as_view(),name='login'),
     path('',auth_views.LoginView.as_view(),name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='registration/logout.html'), name='logout'),
+    path('register/', register, name='register'),
     path('admin/', admin.site.urls),
     path('gardens/', show_gardens,name='gardens'),
     path('gardens/mainPanel', show_panel,name='mainPanel'),

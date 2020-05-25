@@ -5,14 +5,14 @@
 {% endblock %}
 
 {% block content %}
-    <form method="post" action="/gardens/">{% csrf_token %}
+    <form method="post">{% csrf_token %}
         <input name="username" type="text" placeholder="Type your login here">
         <input name="password" type="password" placeholder="Type your password here">
         <button type="submit">Login</button>
     </form>
     <div>
         <small>
-            <a href="../registration.html">Nie masz konta? Zarejestruj się tutaj!</a>
+            <a href="/register">Nie masz konta? Zarejestruj się tutaj!</a>
         </small>
     </div>
 {% endblock %}
