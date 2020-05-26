@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Panel</title>
-</head>
-<body>
-{{ user_id }}
+{% extends 'base.html' %}
+{% block content %}
 
-<button>Rośliny</button>
-<button>Modyfikuj</button>
-<button>Kalendarz</button>
-<button>Profil</button>
-<button>Kontakt</button>
-<button>Wyloguj</button>
+    {{ user_id }}
 
-</body>
-</html>
+    <button>Rośliny</button>
+    <button>Modyfikuj</button>
+    <button>Kalendarz</button>
+    <button>Profil</button>
+    <button>Kontakt</button>
+
+    <form action="../logout">         {% csrf_token %}
+
+        <button >wyloguj</button>
+    </form>
+{% endblock %}

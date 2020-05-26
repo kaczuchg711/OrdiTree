@@ -18,6 +18,9 @@ from django.urls import include, path
 from django.contrib.auth import views as auth_views
 from gardens.views import show_gardens
 from gardens.views import show_panel
+from gardens.views import show_add_garden
+from gardens.models import Garden
+from registration.views import register
 from registration.views import register
 
 urlpatterns = [
@@ -27,4 +30,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('gardens/', show_gardens,name='gardens'),
     path('gardens/mainPanel', show_panel,name='mainPanel'),
+    path('gardens/addGarden', show_add_garden,name='add garden'),
+
 ]
