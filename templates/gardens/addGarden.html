@@ -5,8 +5,8 @@
     <title>addGarden</title>
 </head>
 <body>
+{#dodać walidację aby user nie miał dwóch tych samych ogrodów#}
 <form method="post">        {% csrf_token %}
-
 
     {{ form.as_p }}
 
