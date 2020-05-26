@@ -32,7 +32,7 @@ def show_panel(request, *args, **kwargs):
 
 def show_add_garden(request):
     form = GardenForm(request.POST or None)
-    form.id_user = request.user.id
+    form.initial={'id_user': request.user.id}
     form.fields['id_user'].widget.attrs['readonly'] = True
 
     if form.is_valid():
