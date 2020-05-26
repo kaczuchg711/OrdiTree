@@ -2,9 +2,11 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
+from registration.registrationForm import registrationForm
+
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = registrationForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -13,5 +15,5 @@ def register(request):
             login(request, user)
             return redirect('gardens')
     else:
-        form = UserCreationForm()
+        form = registrationForm()
     return render(request, 'registration/register.html', {'form': form})
