@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>addGarden</title>
-</head>
-<body>
-{#dodać walidację aby user nie miał dwóch tych samych ogrodów#}
+
+{% extends 'base.html' %}
+{% block content %}
 <form method="post">        {% csrf_token %}
 
     {{ form.as_p }}
@@ -14,5 +9,5 @@
 
 
 </form>
-</body>
-</html>
+
+{% endblock %}
