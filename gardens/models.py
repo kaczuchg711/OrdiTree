@@ -5,3 +5,4 @@ from django.db import models
 class Garden(models.Model):
     name = models.CharField(max_length=30)
     id_user = models.IntegerField(default=0)
+

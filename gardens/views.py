@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.forms import HiddenInput
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.http import HttpResponse
@@ -24,23 +25,32 @@ def show_panel(request, *args, **kwargs):
         "user_id": request.user.id
     }
 
-    if not context.get("user_id",False):
+    if not context.get("user_id", False):
         return render(request, "registration/nonePermission.html", context)
 
     return render(request, "gardens/mainPanel.html", context)
 
 
 def show_add_garden(request):
-    form = GardenForm(request.user.id,request.POST or None)
-    form.fields['id_user'].widget.attrs['readonly'] = True
-    form.fields['id_user'].widget.attrs['visible'] = False
-    print(request.user.id)
+    if request.method == 'POST':
 
+        form = GardenForm(request.POST or None)
 
-    if form.is_valid():
-        form.save()
+        if form.is_valid():
+            form.save()
 
-    context = {
+        context = {
             'form': form
         }
-    return render(request, "gardens/addGarden.html",context)
+
+        return render(request, "gardens/addGarden.html", context)
+
+# i only add this fun because i dont know how add default hide input for user id
+def add_Garden_to_db(request):
+    gareden = Garden()
+    gareden.name = request.POST["name"]
+    gareden.id_user = request.user.id
+    gareden.save()
+
+    return redirect('gardens')
+
