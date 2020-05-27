@@ -31,11 +31,11 @@ def show_panel(request, *args, **kwargs):
 
 
 def show_add_garden(request):
-
-    form = GardenForm(request.POST or None)
-    form.fields['id_user'].initial = request.user.id
+    form = GardenForm(request.user.id,request.POST or None)
     form.fields['id_user'].widget.attrs['readonly'] = True
     form.fields['id_user'].widget.attrs['visible'] = False
+    print(request.user.id)
+
 
     if form.is_valid():
         form.save()
