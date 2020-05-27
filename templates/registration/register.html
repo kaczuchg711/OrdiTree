@@ -1,7 +1,16 @@
 {% extends '../base.html' %}
-
+{% load static %}
+{% block title %}
+        Register
+{% endblock %}
+{% block cssRefs %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+{% endblock %}
 {% block content %}
-  <h2>Sign up</h2>
+<div class="login_box">
+  <div class="logo">
+      <img src="{% static 'img/logo.png' %}">
+  </div>
   <form method="post">
     {% csrf_token %}
     {% for field in form %}
@@ -16,6 +25,7 @@
         {% endfor %}
       </p>
     {% endfor %}
-    <button type="submit">Sign up</button>
+    <button class="LoginButton" type="submit">Sign up</button>
   </form>
+</div>
 {% endblock %}
