@@ -31,5 +31,4 @@ urlpatterns = [
     path('gardens/', show_gardens,name='gardens'),
     path('gardens/mainPanel', show_panel,name='mainPanel'),
     path('gardens/addGarden', show_add_garden,name='add garden'),
-
 ]
