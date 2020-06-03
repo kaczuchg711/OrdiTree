@@ -1,16 +1,25 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block title %}
+        MainPage
+{% endblock %}
+{% block cssRefs %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/MainPanel.css' %}">
+{% endblock %}
 {% block content %}
-
-    {{ user_id }}
-
-    <button>Rośliny</button>
-    <button>Modyfikuj</button>
-    <button>Kalendarz</button>
-    <button>Profil</button>
-    <button>Kontakt</button>
-
-    <form action="../logout">         {% csrf_token %}
-
-        <button >wyloguj</button>
-    </form>
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #DDE2C5;">
+  <a class="navbar-brand" href="mainPanel">OrdiTree</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav" >
+          <a class="nav-item nav-link active" href="/plants">Rośliny <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link active" href="/mod">Modyfikuj</a>
+          <a class="nav-item nav-link active" href="/cal">Kalendarz</a>
+          <a class="nav-item nav-link active" href="/contact">Kontakt</a>
+          <a class="nav-item nav-link active" href="/logout">Wyloguj</a>
+    </div>
+  </div>
+</nav>
 {% endblock %}
