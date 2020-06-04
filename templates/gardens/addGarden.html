@@ -4,7 +4,7 @@
 <form method="post" action="addGardenSave">        {% csrf_token %}
 
     {{ form.as_p }}
-
+    {{ warning }}<br>
     <input type="submit" value="Dodaj">
 
 </form>

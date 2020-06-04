@@ -34,6 +34,7 @@ def show_panel(request, *args, **kwargs):
 def show_add_garden(request):
     if request.method == 'POST':
 
+
         form = GardenForm(request.POST or None)
 
         if form.is_valid():
@@ -45,12 +46,28 @@ def show_add_garden(request):
 
         return render(request, "gardens/addGarden.html", context)
 
+
 # i only add this fun because i dont know how add default hide input for user id
 def add_Garden_to_db(request):
+
+    gardens = Garden.objects.all().filter(id_user=request.user.id)
+    gardensnames = []
+
+    for i in gardens:
+        gardensnames.append(i.name)
+
     gareden = Garden()
     gareden.name = request.POST["name"]
-    gareden.id_user = request.user.id
-    gareden.save()
+    if gareden.name in gardensnames:
 
-    return redirect('gardens')
+        form = GardenForm(request.POST or None)
 
+        context = {
+            'form': form,
+            'warning': 'this name is in use'
+        }
+        return render(request, "gardens/addGarden.html", context)
+    else:
+        gareden.id_user = request.user.id
+        gareden.save()
+        return redirect('gardens')
