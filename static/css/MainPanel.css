@@ -1,0 +1,15 @@
+.navbar-light .navbar-nav .nav-link.active{
+    font-size: larger;
+    font-weight: bold;
+    color:#948716;
+}
+
+.navbar-light .navbar-nav .nav-link.active:hover {
+  color:#03B99B;
+}
+
+.navbar-light .navbar-brand{
+    font-size: Larger;
+    font-weight: bold;
+    color:#948716;
+}
