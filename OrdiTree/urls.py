@@ -25,6 +25,8 @@ from gardens.models import Garden
 from registration.views import register
 from registration.views import register
 
+from userPanel.views import userPanel
+
 urlpatterns = [
     path('',auth_views.LoginView.as_view(),name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='registration/logout.html'), name='logout'),
@@ -34,5 +36,6 @@ urlpatterns = [
     path('gardens/mainPanel', show_panel,name='mainPanel'),
     path('gardens/addGarden', show_add_garden,name='add garden'),
     path('gardens/addGardenSave', add_Garden_to_db,name='add garden to db'),
+    path('userPanel/',userPanel,name='userPanel' )
 
 ]

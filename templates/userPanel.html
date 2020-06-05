@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+        User Panel
+{% endblock %}
+{% block cssRefs %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/MainPanel.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/userPanel.css' %}">
+{% endblock %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #DDE2C5;">
+    <a class="navbar-brand" href="mainPanel">OrdiTree</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav" >
+        <a class="nav-item nav-link active" href="/gardens/">Ogrody</a>
+        <a class="nav-item nav-link active" href="/cal">Kalendarz</a>
+        <a class="nav-item nav-link active" href="/userPanel">Mój Profil</a>        
+        <a class="nav-item nav-link active" href="/contact">Kontakt</a>
+        <a class="nav-item nav-link active" href="/logout">Wyloguj</a>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Page content -->
+  <div class="main">
+        <form method="post">
+          {% csrf_token %}
+          {% for field in form %}
+            <p>
+              {{ field.label_tag }}<br>
+              {{ field }}
+              {% if field.help_text %}
+                <small style="color: grey">{{ field.help_text }}</small>
+              {% endif %}
+              {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+              {% endfor %}
+            </p>
+          {% endfor %}
+          <button class="LoginButton" type="submit">Zmień dane</button>
+        </form>
+  </div>
+{% endblock %}
