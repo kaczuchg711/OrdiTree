@@ -1,0 +1,28 @@
+#choice_garden_button {
+
+    border: 0.150em solid #0C6702;
+    border-radius: 2em;
+    background: #AFD8AF 0% 0% no-repeat padding-box;
+    border-radius: 2em;
+    padding: 5%;
+
+
+    color: #16720C;
+    line-height: 1.3em;
+    font-size: 1.3em;
+    font-weight: bold;
+    width: 200%;
+
+
+}
+
+#garden_choice_div {
+    position: relative;
+    margin-left: 33%;
+    margin-top: 10%;
+}
+
+#garden_choice_form
+{
+
+}

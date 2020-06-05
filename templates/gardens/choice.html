@@ -1,17 +1,32 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block cssRefs %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/choice.css' %}">
+    {% endblock %}
 {% block content %}
 
-    <form method="post" action="mainPanel">
+
+<div id="garden_choice_div" >
+
+
+
+    <form id="garden_choice_form"method="post" action="mainPanel">
         {% csrf_token %}
         {% for g in gardens_names %}
-            <button>{{ g }}</button>
+            <button class="" id="choice_garden_button">{{ g }}</button>
             <br><br>
         {% endfor %}
     </form>
 
     <form method="post" action="addGarden">
         {% csrf_token %}
-        <button>dodaj ogród</button>
+        <button class="login_button" id="choice_garden_button">dodaj ogród</button>
     </form>
+
+</div>
+
+
 
 {% endblock %}
