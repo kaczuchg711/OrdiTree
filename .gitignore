@@ -2,5 +2,5 @@ secret_key.py
 .idea/
 __pycache__/
 __pycache__
-gardens/migrations/__pycache__/__init__.cpython-36.pyc
+*/migrations
 desktop.ini

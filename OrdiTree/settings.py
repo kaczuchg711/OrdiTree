@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 #     our
+#     tutaj dodajemy aplikacje aby min modele byly tablicami w bazie danych
     'gardens',
-    'userPanel'
+    'userPanel',
+    'plants'
 ]
 
 MIDDLEWARE = [
