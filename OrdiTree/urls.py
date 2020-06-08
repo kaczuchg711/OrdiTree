@@ -28,7 +28,7 @@ from registration.views import register
 from userPanel.views import userPanel
 
 urlpatterns = [
-    path('',auth_views.LoginView.as_view(),name='login'),
+    path('',auth_views.LoginView.as_view(redirect_authenticated_user=True),name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='registration/logout.html'), name='logout'),
     path('register/', register, name='register'),
     path('admin/', admin.site.urls),
