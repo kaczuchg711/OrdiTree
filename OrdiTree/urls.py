@@ -20,7 +20,7 @@ from gardens.views import show_gardens
 from gardens.views import show_panel
 from gardens.views import show_add_garden
 from gardens.views import add_Garden_to_db
-
+from contact.views import contactPanel
 from gardens.models import Garden
 from registration.views import register
 from registration.views import register
@@ -36,6 +36,7 @@ urlpatterns = [
     path('gardens/mainPanel', show_panel,name='mainPanel'),
     path('gardens/addGarden', show_add_garden,name='add garden'),
     path('gardens/addGardenSave', add_Garden_to_db,name='add garden to db'),
-    path('userPanel/',userPanel,name='userPanel' )
+    path('userPanel/',userPanel,name='userPanel' ),
+    path('contact/',contactPanel,name='contactPanel' )
 
 ]
