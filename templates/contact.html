@@ -27,4 +27,8 @@
 
 <p1>Administracja:</p1>
     <p2><br>Artur Hałat<br>email.@.gmail.com<br>999 999 999 <br><br><br>Tomasz Kacza<br>email.@.gmail.com<br>999 999 999<br><br><br>Tomasz Kacza<br>email.@.gmail.com<br>999 999 999</p2>
+<form method="post" class="messageform">{% csrf_token %}
+{{ form.as_p }}
+<button type="submit" class="button_message">Wyślij</button>
+</form>
 {% endblock %}

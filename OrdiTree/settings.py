@@ -42,7 +42,8 @@ INSTALLED_APPS = [
 #     tutaj dodajemy aplikacje aby min modele byly tablicami w bazie danych
     'gardens',
     'userPanel',
-    'plants'
+    'plants',
+    'contact'
 ]
 
 MIDDLEWARE = [
