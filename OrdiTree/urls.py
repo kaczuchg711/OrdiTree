@@ -16,12 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.contrib.auth import views as auth_views
+
 from gardens.views import show_gardens
 from gardens.views import show_panel
 from gardens.views import show_add_garden
 from gardens.views import add_Garden_to_db
 
-from gardens.models import Garden
+from plants.views import show_plants
+
 from registration.views import register
 from registration.views import register
 
@@ -36,6 +38,7 @@ urlpatterns = [
     path('gardens/mainPanel', show_panel,name='mainPanel'),
     path('gardens/addGarden', show_add_garden,name='add garden'),
     path('gardens/addGardenSave', add_Garden_to_db,name='add garden to db'),
-    path('userPanel/',userPanel,name='userPanel' )
+    path('userPanel/',userPanel,name='userPanel' ),
+    path('plants/',show_plants,name='show_plants' )
 
 ]
