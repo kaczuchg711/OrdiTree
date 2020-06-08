@@ -34,7 +34,6 @@ def show_panel(request, *args, **kwargs):
 def show_add_garden(request):
     if request.method == 'POST':
 
-        print(request.user.get_full_name())
         form = GardenForm(request.POST or None)
 
         if form.is_valid():
@@ -44,6 +43,8 @@ def show_add_garden(request):
             'form': form
         }
 
+
+
         return render(request, "gardens/addGarden.html", context)
 
 
@@ -51,8 +52,6 @@ def show_add_garden(request):
 def add_Garden_to_db(request):
 
     gardens = Garden.objects.all().filter(id_user=request.user.id)
-
-
     gardensnames = []
 
     for i in gardens:
