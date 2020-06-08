@@ -8,9 +8,12 @@ def contactPanel(request):
     sendMessage = MessageOrdiTree.objects.filter(sender = request.user)
     form = MessageOrdiTreeForm()
     context = {
-        "user_id": request.user.id
+        "user_id": request.user.id,
+        'form': form,
+        'yourmessages':readMessage,
+        'sendersmessages':sendMessage
     }
     if not context.get("user_id", False):
         return render(request, "registration/nonePermission.html", context)
 
-    return render(request, "contact.html", {'form':form})
+    return render(request, "contact.html", context)

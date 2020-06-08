@@ -31,4 +31,7 @@
 {{ form.as_p }}
 <button type="submit" class="button_message">Wyślij</button>
 </form>
+<div class="yourMessagescalss">
+    {% for m in yourmessages %} m {% endfor %}
+</div>
 {% endblock %}
