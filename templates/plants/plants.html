@@ -1,10 +1,9 @@
-
 {% extends 'base_with_navbar.html' %}
 
 
 {% load static %}
 {% block title %}
-        MainPage
+    MainPage
 {% endblock %}
 {% block cssRefs %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/MainPanel.css' %}">
@@ -13,6 +12,9 @@
 
     <div>Wszystkie rośliny w ogrodzie</div>
 
+    {% for i in user_plants %}
+        {{ i.name }}
+        <br><br>
+    {% endfor %}
 
-</nav>
 {% endblock %}
