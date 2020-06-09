@@ -2,14 +2,26 @@ from django.shortcuts import render
 
 # Create your views here.
 from plants.models import Plant
+from plants.models import associative_Gardens
+
 
 def show_plants(request, *args, **kwargs):
 
     # how to get this 29 ?
-    plants = Plant.objects.filter(Garden=29)
+    ids_plants = associative_Gardens.objects.filter(id_garden=8)
+
+    print("przed for")
+    for i in ids_plants:
+        print(i.id_plant.id)
+
+    print("po for")
+    plants_obj = Plant.objects.all()
+
+    #  musze przypisac tym id u gory obiekty Plants
+
 
     context = {
-        'user_plants' : plants
+        'user_plants' : plants_obj
     }
 
     return render(request, "plants/plants.html", context)

@@ -15,5 +15,8 @@ class Plant(models.Model):
     watering_frequency_byDays = models.IntegerField(default=3)
     last_cutting_date = models.DateField(default="2000-11-11")
     cutting_frequency_byDays = models.IntegerField(default=3)
-    # this create MM table separate from Plant
-    Garden = models.ManyToManyField(Garden)
+
+
+class associative_Gardens(models.Model):
+    id_garden = models.ForeignKey(Garden, on_delete=models.SET(0))
+    id_plant = models.ForeignKey(Plant, on_delete=models.SET(0))
