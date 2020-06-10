@@ -17,11 +17,18 @@ def show_plants(request, *args, **kwargs):
     print("po for")
     plants_obj = Plant.objects.all()
 
+    a = []
+
+    for i in ids_plants:
+        a.append(Plant.objects.filter(id=i.id_plant.id)[0])
+
+
+
     #  musze przypisac tym id u gory obiekty Plants
 
 
     context = {
-        'user_plants' : plants_obj
+        'user_plants' : a
     }
 
     return render(request, "plants/plants.html", context)
