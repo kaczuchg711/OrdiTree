@@ -5,11 +5,13 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 from gardens.forms import GardenForm
+
 from gardens.models import Garden
 
 
 def show_gardens(request, *args, **kwargs):
     gardenss = Garden.objects.filter(id_user=request.user.id)
+
     context = {
         "title": "gardens",
         "gardens_names": [g.name for g in gardenss]
@@ -25,6 +27,12 @@ def show_panel(request, *args, **kwargs):
         "user_id": request.user.id
     }
 
+    if request.method == 'POST':
+        print(request.POST)
+        print(request.POST['garden'])
+
+        request.session['garden_name'] = request.POST['garden']
+        print(request.session['garden_name'] )
     if not context.get("user_id", False):
         return render(request, "registration/nonePermission.html", context)
 
@@ -43,14 +51,11 @@ def show_add_garden(request):
             'form': form
         }
 
-
-
         return render(request, "gardens/addGarden.html", context)
 
 
 # i only add this fun because i dont know how add default hide input for user id
 def add_Garden_to_db(request):
-
     gardens = Garden.objects.all().filter(id_user=request.user.id)
     gardensnames = []
 
@@ -59,6 +64,7 @@ def add_Garden_to_db(request):
 
     gareden = Garden()
     gareden.name = request.POST["name"]
+
     if gareden.name in gardensnames:
 
         form = GardenForm(request.POST or None)

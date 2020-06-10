@@ -29,7 +29,6 @@ from contact.views import contactPanel
 
 from registration.views import register
 
-
 from userPanel.views import userPanel ,changePassword
 
 urlpatterns = [
