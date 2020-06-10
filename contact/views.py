@@ -15,7 +15,6 @@ def contactPanel(request):
 
 
     form = MessageOrdiTreeForm(request.POST or None)
-    form.isValid()
     messageModel=MessageOrdiTree()
     if 'reciever' in request.POST and 'message_content' in request.POST:
         messageModel.reciever = User.objects.get(id=request.POST['reciever'])
