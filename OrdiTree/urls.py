@@ -28,9 +28,9 @@ from plants.views import show_plants
 from contact.views import contactPanel
 
 from registration.views import register
-from registration.views import register
 
-from userPanel.views import userPanel
+
+from userPanel.views import userPanel ,changePassword
 
 urlpatterns = [
     path('',auth_views.LoginView.as_view(redirect_authenticated_user=True),name='login'),
@@ -42,6 +42,7 @@ urlpatterns = [
     path('gardens/addGarden', show_add_garden,name='add garden'),
     path('gardens/addGardenSave', add_Garden_to_db,name='add garden to db'),
     path('userPanel/',userPanel,name='userPanel' ),
+    path('userPanel/changePassword',changePassword,name='changePassword' ),
     path('plants/',show_plants,name='show_plants' ),
     path('contact/',contactPanel,name='contactPanel' )
 ]
