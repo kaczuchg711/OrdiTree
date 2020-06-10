@@ -45,5 +45,5 @@ urlpatterns = [
     path('userPanel/changePassword',changePassword,name='changePassword' ),
     path('plants/',show_plants,name='show_plants' ),
     path('contact/',contactPanel,name='contactPanel' ),
-    path('delateMessage/',delateMessage,name='delateMessage'),
+    path('contact/delateMessage',delateMessage,name='delateMessage'),
 ]
