@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from contact.forms import MessageOrdiTreeForm
 from contact.forms import MessageOrdiTreeFromDelate
 from contact.models import MessageOrdiTree
@@ -15,7 +15,7 @@ def contactPanel(request):
 
 
     form = MessageOrdiTreeForm(request.POST or None)
-    form.isValid()
+
     messageModel=MessageOrdiTree()
     if 'reciever' in request.POST and 'message_content' in request.POST:
         messageModel.reciever = User.objects.get(id=request.POST['reciever'])
@@ -42,8 +42,9 @@ def contactPanel(request):
 def delateMessage(request):
 
     if request.method == 'POST':
-        form = MessageOrdiTreeFromDelate(request.POST or None)
+        form = MessageOrdiTreeFromDelate(request.POST)
         if form.is_valid():
-            print('zyje')
+            message = MessageOrdiTree.objects.filter(id = request.POST.get('message_id'), reciever = request.user.id)
+            message.delete()
 
-    return redirect('contact')
+    return redirect('/contact')
