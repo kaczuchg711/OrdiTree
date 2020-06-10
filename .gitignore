@@ -3,3 +3,4 @@ secret_key.py
 __pycache__/
 __pycache__
 desktop.ini
+venv

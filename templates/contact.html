@@ -14,7 +14,17 @@
 <button type="submit" class="button_message">Wyślij</button>
 </form>
 <div class="yourMessagescalss">
-    {{ sprawdzenie }}
-    {% for m in yourmessages %} 1 {% endfor %}
+    {% for m in yourmessages %}
+        <div class="newMessage">
+             {{ m.1 }} {{ m.2 }} Wysłał ci wiadomość o treści:   {{ m.3 }}
+        <form action='delateMessage' method="POST">{% csrf_token %}
+            <input type="hidden" name="message_id"  value= {{ m.0 }} >
+            <button class="deleteMessage" type="submit">
+                Usuń wiadomość
+            </button>
+        </form>
+        {{ zmienna }}
+        </div>
+    {% endfor %}
 </div>
 {% endblock %}
