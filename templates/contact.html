@@ -8,13 +8,24 @@
 {% endblock %}
 {% block content %}
 <p1>Administracja:</p1>
-    <p2><br>Artur Hałat<br>email.@.gmail.com<br>999 999 999 <br><br><br>Tomasz Kacza<br>email.@.gmail.com<br>999 999 999<br><br><br>Tomasz Kacza<br>email.@.gmail.com<br>999 999 999</p2>
+    <p2><br>Artur Hałat<br>email.@.gmail.com<br>999 999 999 <br><br>Tomasz Kacza<br>email.@.gmail.com<br>999 999 999<br><br>Jakub Grodny<br>email.@.gmail.com<br>999 999 999</p2>
 <form method="post" class="messageform">{% csrf_token %}
 {{ form.as_p }}
 <button type="submit" class="button_message">Wyślij</button>
 </form>
 <div class="yourMessagescalss">
-    {{ sprawdzenie }}
-    {% for m in yourmessages %} 1 {% endfor %}
+    {% for m in yourmessages %}
+        <div class="newMessage">
+            <p3>{{ m.1 }} {{ m.2 }} Wysłał ci wiadomość o treści:</p3>
+            <p4>{{ m.3 }}</p4>
+        <form action='delateMessage' method="POST">{% csrf_token %}
+            <input type="hidden" name="message_id"  value= {{ m.0 }} >
+            <button class="deleteMessage" type="submit">
+                Usuń wiadomość
+            </button>
+        </form>
+        {{ zmienna }}
+        </div>
+    {% endfor %}
 </div>
 {% endblock %}

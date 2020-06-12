@@ -19,10 +19,64 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 text-align: center;
+font-size: x-large;
+color: #948716;
+    font-weight: bold;
 }
 p2{
 display: flex;
 flex-direction: row;
 justify-content: center;
 text-align: center;
+    font-weight: bold;
+    color: dimgrey;
 }
+
+.messageform{
+    display: flex;
+    justify-content: center;
+}
+.messageform > p {
+    padding-left: 0.5em;
+    font-size: 1.5em;
+    color: dimgrey;
+}
+
+.messageform > p >select{
+    border-radius: 1em;
+    font-size: medium;
+    color: dimgrey;
+
+}
+.messageform > p >input{
+    border-radius: 2em;
+    font-size: medium;
+    color: dimgrey;
+    border: 2px solid dimgrey;
+}
+
+.button_message{
+    border-radius: 1em;
+    font-size: medium;
+    color: dimgrey;
+    margin-block-end: 1.4em;
+    margin-block-start: 0.3em;
+    border: 2px solid dimgrey;
+}
+
+.newMessage{
+    display: flex;
+    justify-content: center;
+}
+p3{
+    color: dimgrey;
+    font-weight: bold;
+    margin-right: 1em;
+}
+.deleteMessage{
+    border-radius: 1em;
+    font-size: medium;
+    border: 2px solid dimgrey;
+    margin-left: 1em;
+}
+

@@ -26,7 +26,7 @@ from gardens.models import Garden
 from plants.views import show_plants
 
 from contact.views import contactPanel
-
+from contact.views import delateMessage
 from registration.views import register
 
 from userPanel.views import userPanel ,changePassword
@@ -43,5 +43,6 @@ urlpatterns = [
     path('userPanel/',userPanel,name='userPanel' ),
     path('userPanel/changePassword',changePassword,name='changePassword' ),
     path('plants/',show_plants,name='show_plants' ),
-    path('contact/',contactPanel,name='contactPanel' )
+    path('contact/',contactPanel,name='contactPanel' ),
+    path('contact/delateMessage',delateMessage,name='delateMessage'),
 ]

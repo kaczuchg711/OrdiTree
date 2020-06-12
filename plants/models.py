@@ -9,14 +9,15 @@ class Plant(models.Model):
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=300)
     temperature = models.IntegerField(default=20)
-    last_manuring_date = models.DateField(default="2000-11-11")
     manuring_frequency_byDays = models.IntegerField(default=15)
-    last_watering_date = models.DateField(default="2000-11-11")
     watering_frequency_byDays = models.IntegerField(default=3)
-    last_cutting_date = models.DateField(default="2000-11-11")
     cutting_frequency_byDays = models.IntegerField(default=3)
+    image_name = models.CharField(max_length=100, default="brak_obrazka.jpg")
 
 
 class associative_Gardens(models.Model):
     id_garden = models.ForeignKey(Garden, on_delete=models.SET(0))
     id_plant = models.ForeignKey(Plant, on_delete=models.SET(0))
+    last_cutting_date = models.DateField(default="2000-11-11")
+    last_watering_date = models.DateField(default="2000-11-11")
+    last_manuring_date = models.DateField(default="2000-11-11")

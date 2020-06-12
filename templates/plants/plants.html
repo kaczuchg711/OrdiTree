@@ -7,14 +7,18 @@
 {% endblock %}
 {% block cssRefs %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/MainPanel.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/plants.css' %}">
 {% endblock %}
 {% block content %}
 
     <div>Wszystkie rośliny w ogrodzie</div>
-
+    <div class="plant_box">
     {% for i in user_plants %}
-        {{ i.name }}
-        <br><br>
+        <div class="plant">
+        <div>{{ i.name }}</div>
+        <img src="{% static 'img/plants/'|add:i.image_name %}">
+        <div>{{i.description}}</div>
+        </div>
     {% endfor %}
-
+    </div>
 {% endblock %}

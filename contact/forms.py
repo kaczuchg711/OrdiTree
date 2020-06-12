@@ -8,3 +8,11 @@ class MessageOrdiTreeForm(forms.ModelForm):
     class Meta:
         model = MessageOrdiTree
         fields = ('reciever','message_content',)
+
+class MessageOrdiTreeFromDelate(forms.ModelForm):
+        
+    class Meta:
+        model = MessageOrdiTree
+        fields = ('id',)
+
+    
