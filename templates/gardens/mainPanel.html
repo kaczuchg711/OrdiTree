@@ -7,5 +7,5 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/MainPanel.css' %}">
 {% endblock %}
 {% block content %}
-
+{% for m in PlantsMain %}{{ m }}{% endfor %}
 {% endblock %}

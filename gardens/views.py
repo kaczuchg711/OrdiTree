@@ -6,7 +6,7 @@ from django.http import HttpResponse
 
 from gardens.forms import GardenForm
 from gardens.models import Garden
-
+from plants.models import associative_Gardens
 
 def show_gardens(request, *args, **kwargs):
     gardenss = Garden.objects.filter(id_user=request.user.id)
@@ -21,8 +21,21 @@ def show_gardens(request, *args, **kwargs):
 
 
 def show_panel(request, *args, **kwargs):
+
+    PlantsMain = associative_Gardens.objects.filter(id_garden=obecnyGarden)
+    ListOfCommunicats=[]
+    for i in PlantsMain:
+        if dzisiejszadata-i.last_cutting_date>coileobciac:
+            ListOfCommunicats.append(["obetnij kwiatuszka",i.id_plant])
+        if dzisiejszadata - i.last_watering_date > coilepodlac:
+            ListOfCommunicats.append(["nawiez kwiatuszka", i.id_plant])
+        if dzisiejszadata-i.last_cutting_date>coilenawiezc:
+            ListOfCommunicats.append(["nawiez kwiatuszka",i.id_plant])
+
     context = {
-        "user_id": request.user.id
+        "user_id": request.user.id,
+        #"currentPlants":PlantsMain,
+        "PlantsWarnings":ListOfCommunicats
     }
 
     if not context.get("user_id", False):
