@@ -24,6 +24,7 @@ from gardens.views import add_Garden_to_db
 from gardens.models import Garden
 
 from plants.views import show_plants
+from plants.views import add_plant_to_garden
 
 from contact.views import contactPanel
 from contact.views import delateMessage
@@ -45,4 +46,5 @@ urlpatterns = [
     path('plants/',show_plants,name='show_plants' ),
     path('contact/',contactPanel,name='contactPanel' ),
     path('contact/delateMessage',delateMessage,name='delateMessage'),
+    path('plants/add_plant_to_garden',add_plant_to_garden,name='add_plant_to_garden'),
 ]

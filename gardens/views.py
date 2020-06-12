@@ -26,11 +26,7 @@ def show_panel(request, *args, **kwargs):
     }
 
     if request.method == 'POST':
-        print(request.POST)
-        print(request.POST['garden'])
-
         request.session['garden_name'] = request.POST['garden']
-        print(request.session['garden_name'] )
 
     if not context.get("user_id", False):
         return render(request, "registration/nonePermission.html", context)
