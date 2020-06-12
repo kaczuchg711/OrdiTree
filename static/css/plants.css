@@ -1,0 +1,15 @@
+.plant_box
+{
+    display: flex;
+    flex-direction: row;
+}
+.plant
+{
+    width: 20em;
+    height: 30em;
+}
+.plant > img
+{
+    width: 10em;
+    height: 10em;
+}

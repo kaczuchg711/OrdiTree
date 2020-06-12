@@ -38,6 +38,9 @@ def show_panel(request, *args, **kwargs):
         "PlantsWarnings":ListOfCommunicats
     }
 
+    if request.method == 'POST':
+        request.session['garden_name'] = request.POST['garden']
+
     if not context.get("user_id", False):
         return render(request, "registration/nonePermission.html", context)
 
