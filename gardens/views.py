@@ -1,9 +1,10 @@
 from django.forms import HiddenInput
 from django.shortcuts import render, redirect
-
 # Create your views here.
 from django.http import HttpResponse
-
+from datetime import date
+from datetime import datetime
+from plants.models import Plant
 from gardens.forms import GardenForm
 from gardens.models import Garden
 from plants.models import associative_Gardens
@@ -22,15 +23,19 @@ def show_gardens(request, *args, **kwargs):
 
 def show_panel(request, *args, **kwargs):
 
-    PlantsMain = associative_Gardens.objects.filter(id_garden=obecnyGarden)
+    garden_name = request.session['garden_name']
+    garden = Garden.objects.filter(id_user=request.user.id, name=garden_name)[0]
+    PlantsMain = associative_Gardens.objects.filter(id_garden=garden.id)
     ListOfCommunicats=[]
+    today = date.today()
     for i in PlantsMain:
-        if dzisiejszadata-i.last_cutting_date>coileobciac:
-            ListOfCommunicats.append(["obetnij kwiatuszka",i.id_plant])
-        if dzisiejszadata - i.last_watering_date > coilepodlac:
-            ListOfCommunicats.append(["nawiez kwiatuszka", i.id_plant])
-        if dzisiejszadata-i.last_cutting_date>coilenawiezc:
-            ListOfCommunicats.append(["nawiez kwiatuszka",i.id_plant])
+        tempPlant = Plant.objects.filter(id=i.id_plant_id)[0]
+        if (today-i.last_manuring_date).days > tempPlant.manuring_frequency_byDays:
+            ListOfCommunicats.append([tempPlant.name,i.id,(today-i.last_manuring_date).days,"Potrzebuje nawożenia"])
+        if (today - i.last_watering_date).days > tempPlant.watering_frequency_byDays:
+            ListOfCommunicats.append([tempPlant.name,i.id,(today-i.last_watering_date).days,"Potrzebuje podlania"])
+        if (today-i.last_cutting_date).days > tempPlant.cutting_frequency_byDays:
+            ListOfCommunicats.append([tempPlant.name,i.id,(today-i.last_cutting_date).days,"Potrzebuje obcięcia"])
 
     context = {
         "user_id": request.user.id,

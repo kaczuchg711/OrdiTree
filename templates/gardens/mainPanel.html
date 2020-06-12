@@ -7,5 +7,5 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/MainPanel.css' %}">
 {% endblock %}
 {% block content %}
-{% for m in PlantsMain %}{{ m }}{% endfor %}
+{% for m in PlantsWarnings %}<p>Roślinka {{ m.0 }} o id:{{ m.1 }} {{ m.3 }} bo nie robiłeś tego od {{ m.2 }} dni</p>{% endfor %}
 {% endblock %}

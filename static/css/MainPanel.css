@@ -13,3 +13,13 @@
     font-weight: bold;
     color:#948716;
 }
+
+p{
+display: flex;
+flex-direction: row;
+justify-content: center;
+text-align: center;
+    font-size: Large;
+    font-weight: bold;
+    color: dimgrey;
+}
