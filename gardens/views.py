@@ -22,9 +22,8 @@ def show_gardens(request, *args, **kwargs):
 
 def show_panel(request, *args, **kwargs):
     context = {
-        "user_id": request.user.id
+        "user_id": request.user.id,
     }
-
     if not context.get("user_id", False):
         return render(request, "registration/nonePermission.html", context)
 

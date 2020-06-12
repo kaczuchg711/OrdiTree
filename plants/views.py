@@ -8,7 +8,7 @@ from plants.models import associative_Gardens
 def show_plants(request, *args, **kwargs):
 
     # how to get this 29 ?
-    ids_plants = associative_Gardens.objects.filter(id_garden=8)
+    ids_plants = associative_Gardens.objects.filter(id_garden=29)
 
     print("przed for")
     for i in ids_plants:
