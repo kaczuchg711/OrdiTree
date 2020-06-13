@@ -9,6 +9,7 @@ from gardens.forms import GardenForm
 from gardens.models import Garden
 from plants.models import associative_Gardens
 
+
 def show_gardens(request, *args, **kwargs):
     gardenss = Garden.objects.filter(id_user=request.user.id)
     context = {
@@ -22,25 +23,31 @@ def show_gardens(request, *args, **kwargs):
 
 
 def show_panel(request, *args, **kwargs):
+    if request.method == 'POST':
+        garden_name = request.POST['garden']
+        print("\n\n\n\n\n tak \n\n\n\n")
+        request.session['garden_name'] = garden_name
+        garden = Garden.objects.filter(id_user=request.user.id, name=garden_name)[0]
+    else:
+        garden = Garden.objects.filter(id_user=request.user.id, name=request.session['garden_name'])[0]
 
-    garden_name = request.session['garden_name']
-    garden = Garden.objects.filter(id_user=request.user.id, name=garden_name)[0]
     PlantsMain = associative_Gardens.objects.filter(id_garden=garden.id)
-    ListOfCommunicats=[]
+    ListOfCommunicats = []
     today = date.today()
     for i in PlantsMain:
         tempPlant = Plant.objects.filter(id=i.id_plant_id)[0]
-        if (today-i.last_manuring_date).days > tempPlant.manuring_frequency_byDays:
-            ListOfCommunicats.append([tempPlant.name,i.id,(today-i.last_manuring_date).days,"Potrzebuje nawożenia"])
+        if (today - i.last_manuring_date).days > tempPlant.manuring_frequency_byDays:
+            ListOfCommunicats.append(
+                [tempPlant.name, i.id, (today - i.last_manuring_date).days, "Potrzebuje nawożenia"])
         if (today - i.last_watering_date).days > tempPlant.watering_frequency_byDays:
-            ListOfCommunicats.append([tempPlant.name,i.id,(today-i.last_watering_date).days,"Potrzebuje podlania"])
-        if (today-i.last_cutting_date).days > tempPlant.cutting_frequency_byDays:
-            ListOfCommunicats.append([tempPlant.name,i.id,(today-i.last_cutting_date).days,"Potrzebuje obcięcia"])
+            ListOfCommunicats.append([tempPlant.name, i.id, (today - i.last_watering_date).days, "Potrzebuje podlania"])
+        if (today - i.last_cutting_date).days > tempPlant.cutting_frequency_byDays:
+            ListOfCommunicats.append([tempPlant.name, i.id, (today - i.last_cutting_date).days, "Potrzebuje obcięcia"])
 
     context = {
         "user_id": request.user.id,
-        #"currentPlants":PlantsMain,
-        "PlantsWarnings":ListOfCommunicats
+        # "currentPlants":PlantsMain,
+        "PlantsWarnings": ListOfCommunicats
     }
 
     if request.method == 'POST':
@@ -48,6 +55,7 @@ def show_panel(request, *args, **kwargs):
 
     if not context.get("user_id", False):
         return render(request, "registration/nonePermission.html", context)
+
 
     return render(request, "gardens/mainPanel.html", context)
 
@@ -64,14 +72,11 @@ def show_add_garden(request):
             'form': form
         }
 
-
-
         return render(request, "gardens/addGarden.html", context)
 
 
 # i only add this fun because i dont know how add default hide input for user id
 def add_Garden_to_db(request):
-
     gardens = Garden.objects.all().filter(id_user=request.user.id)
     gardensnames = []
 
@@ -79,6 +84,7 @@ def add_Garden_to_db(request):
         gardensnames.append(i.name)
 
     gareden = Garden()
+
     gareden.name = request.POST["name"]
     if gareden.name in gardensnames:
 
