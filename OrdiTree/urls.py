@@ -17,17 +17,12 @@ from django.contrib import admin
 from django.urls import include, path
 from django.contrib.auth import views as auth_views
 
-from gardens.views import show_gardens
-from gardens.views import show_panel
-from gardens.views import show_add_garden
-from gardens.views import add_Garden_to_db
+from gardens.views import show_gardens, show_panel, show_add_garden, add_Garden_to_db
 from gardens.models import Garden
 
-from plants.views import show_plants
-from plants.views import add_plant_to_garden
+from plants.views import show_plants, add_plant_to_garden, delatePlant
 
-from contact.views import contactPanel
-from contact.views import delateMessage
+from contact.views import contactPanel, delateMessage
 from registration.views import register
 
 from userPanel.views import userPanel ,changePassword
@@ -44,6 +39,7 @@ urlpatterns = [
     path('userPanel/',userPanel,name='userPanel' ),
     path('userPanel/changePassword',changePassword,name='changePassword' ),
     path('plants/',show_plants,name='show_plants' ),
+    path('plants/delatePlant', delatePlant,name='delatePlant'),
     path('contact/',contactPanel,name='contactPanel' ),
     path('contact/delateMessage',delateMessage,name='delateMessage'),
     path('plants/add_plant_to_garden',add_plant_to_garden,name='add_plant_to_garden'),

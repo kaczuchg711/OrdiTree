@@ -2,14 +2,27 @@
 {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 .plant
 {
-    width: 20em;
-    height: 30em;
+    width: 12em;
+    height: 18em;
+    align-self: center;
+    text-align: center;
 }
-.plant > img
+.obrazek
 {
     width: 10em;
     height: 10em;
+}
+
+button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
 }

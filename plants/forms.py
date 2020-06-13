@@ -9,3 +9,11 @@ class associativePlantGardenForm(forms.ModelForm):
     class Meta:
         model = associative_Gardens
         fields = ['id_garden','id_plant']
+
+class deletePlantForm(forms.ModelForm):
+        
+    class Meta:
+        model = associative_Gardens
+        fields = ['id',]
+
+    

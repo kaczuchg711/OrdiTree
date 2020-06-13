@@ -12,7 +12,7 @@ class Plant(models.Model):
     manuring_frequency_byDays = models.IntegerField(default=15)
     watering_frequency_byDays = models.IntegerField(default=3)
     cutting_frequency_byDays = models.IntegerField(default=3)
-    image_name = models.CharField(max_length=100, default="brak_obrazka.jpg")
+    image_name = models.CharField(max_length=100, default="brak_obrazka.png")
 
 
 class associative_Gardens(models.Model):

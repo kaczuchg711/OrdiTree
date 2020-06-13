@@ -14,23 +14,35 @@
     <div class="plant_box">
         {% for i in user_plants %}
             <div class="plant">
-                <div>{{ i.name }}</div>
-                <img src="{% static 'img/plants/'|add:i.image_name %}">
-                <div>{{ i.description }}</div>
+                <h4>{{ i.0.name }}
+                <button class="deletePlant" type="submit">
+                    <img width="15em" src="{% static 'img/plants/remove.png' %}">
+                </button>
+                </h4>
+                <img  class="obrazek" src="{% static 'img/plants/'|add:i.0.image_name %}">
+                <div>{{ i.0.description }}</div>
+                <form action='delatePlant' method="POST">{% csrf_token %}
+                    <input type="hidden" name="id" value={{ i.1 }}>
+
+                </form>
             </div>
         {% endfor %}
-        <form method="post" action="add_plant_to_garden">        {% csrf_token %}
+        <div class="plant">
+            <h4>Dodaj rośline</h4>
 
-            <select   name="plant" required>
-                <option value="">Wybierz Roślinę</option>
+            <form method="post" action="add_plant_to_garden">        
+                {% csrf_token %}
+                <button class="deletePlant" type="submit">
+                    <img class="obrazek" src="{% static 'img/plants/add.png' %}">
+                </button>
+                <select   name="plant" required>
+                    <option value="">Wybierz Roślinę</option>
                 {% for i in base_plants %}
                     <option  value='{{ i }}'>{{ i }}</option>
                 {% endfor %}
-            </select>
+                </select>
 
-            <input type="submit" value="Select">
-
-
-        </form>
+            </form>
+        </div>
     </div>
 {% endblock %}
